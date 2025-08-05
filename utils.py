@@ -1,11 +1,15 @@
 import spacy
-from pdfminer.high_level import extract_text
+import fitz
 import re
 
 nlp = spacy.load("en_core_web_sm")
 
 def extract_text_from_pdf(file_path):
-    return extract_text(file_path)
+    doc = fitz.open(file_path)
+    text = ""
+    for page in doc:
+        text += page.get_text("text")
+    return text
 
 def extract_text_from_txt(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
