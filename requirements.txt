@@ -1,4 +1,4 @@
 streamlit
 spacy
 python-docx
-pdfminer.six
+fitz
